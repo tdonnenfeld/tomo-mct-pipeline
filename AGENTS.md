@@ -58,7 +58,8 @@ For Gridrec, install TomoPy in a compatible environment and use `--backend tomop
 
 ## Outputs and checks
 
-- Write outputs under `results/`: `compressed.j2c`, `metrics.csv`, `pipeline.png`, `plots/01_projection.png`, `plots/02_normalization.png`, `plots/03_absorbance.png`, `plots/04_reconstruction.png`, and the reconstructed TIFFs.
+- Write outputs under `results/`: `compressed.j2c`, `metrics.csv`, `results.md`, `pipeline.png`, `plots/01_projection.png`, `plots/02_normalization.png`, `plots/03_absorbance.png`, `plots/04_reconstruction.png`, and the reconstructed TIFFs.
+- `results/results.md` reports the run summary and the `metrics.csv` table in plain-language terms, and embeds the per-stage figures plus the overview.
 - After changing codec logic, verify decoded shape, dtype, angular ordering and the reported actual compression ratio.
 - After changing preprocessing or reconstruction, verify both branches use the same parameters and that output arrays have matching shapes and finite-value behavior.
 - Do not edit the input TIFF archive or Kakadu binaries.
