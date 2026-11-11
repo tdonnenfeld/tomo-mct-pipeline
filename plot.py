@@ -10,13 +10,6 @@ import numpy as np
 TITLES = ("Reference", "Kakadu MCT", "Absolute Error")
 
 
-def sample(array, height=700, width=900):
-    return array[
-        :: max(1, (array.shape[0] + height - 1) // height),
-        :: max(1, (array.shape[1] + width - 1) // width),
-    ]
-
-
 def images(name, reference, compressed, row):
     if name == "Reconstruction":
         return reference[row], compressed[row]
@@ -25,8 +18,8 @@ def images(name, reference, compressed, row):
 
 def panels(axes, reference, compressed, titles=False):
     error = np.abs(compressed.astype(np.float32) - reference.astype(np.float32))
-    low, high = np.percentile(sample(reference), [1, 99])
-    limit = max(float(np.percentile(sample(error), 99.5)), 1e-12)
+    low, high = np.percentile(reference, [1, 99])
+    limit = max(float(np.percentile(error, 99.5)), 1e-12)
     for axis, image, title, cmap, vmin, vmax in zip(
         axes,
         (reference, compressed, error),
@@ -36,8 +29,8 @@ def panels(axes, reference, compressed, titles=False):
         (high, high, limit),
     ):
         artist = axis.imshow(
-            sample(image), cmap=cmap, vmin=vmin, vmax=vmax,
-            aspect="auto", interpolation="nearest"
+            image, cmap=cmap, vmin=vmin, vmax=vmax,
+            aspect="auto", interpolation="none"
         )
         axis.set_xticks([])
         axis.set_yticks([])
@@ -48,10 +41,10 @@ def panels(axes, reference, compressed, titles=False):
 
 def stage_plot(name, reference, compressed, path, row):
     reference, compressed = images(name, reference, compressed, row)
-    figure, axes = plt.subplots(1, 3, figsize=(14, 4.6), layout="constrained")
+    figure, axes = plt.subplots(1, 3, figsize=(32, 11), layout="constrained")
     panels(axes, reference, compressed, titles=True)
     figure.suptitle(name)
-    figure.savefig(path, dpi=115)
+    figure.savefig(path, dpi=220)
     plt.close(figure)
 
 
