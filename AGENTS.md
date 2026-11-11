@@ -23,7 +23,7 @@ Study how Kakadu JPEG 2000 Part-2 multi-component compression changes synchrotro
 - `absorbance.py`: negative logarithm of normalized transmission.
 - `reconstruct.py`: TomoPy Gridrec or scikit-image filtered-backprojection preview.
 - `metrics.py`: RMSE, MAE, reference-range NRMSE and PSNR.
-- `plot.py`: one per-stage comparison figure, plus the overview figure. Rendering decimation affects plots only, not distortion metrics.
+- `plot.py`: one per-stage comparison figure, plus the overview figure. Plot full-resolution arrays without decimation; rendering to PNG may still scale images to the saved figure dimensions.
 
 ## Inputs and tools
 
@@ -71,4 +71,4 @@ For Gridrec, install TomoPy in a compatible environment and use `--backend tomop
 - Keep the reference and distorted image intensity scales identical within a stage.
 - Only plot Reference, Kakadu MCT, and Absolute Error; use a sequential colormap for absolute errors.
 - Use short titles and do not confuse clipped display values with full-array metrics.
-- Avoid saving large intermediate arrays only to produce plots.
+- Stage PNGs use high-resolution rendering; the pipeline overview is a smaller summary.\n- Avoid saving large intermediate arrays only to produce plots.
