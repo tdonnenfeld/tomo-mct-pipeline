@@ -68,6 +68,6 @@ For Gridrec, install TomoPy in a compatible environment and use `--backend tomop
 
 - The first three stages display a single-row sinogram (angle index × detector column); reconstruction displays one slice.
 - Keep the reference and distorted image intensity scales identical within a stage.
-- Use diverging colors for signed errors and a sequential colormap for absolute errors.
-- Label display percentile clipping and do not confuse rendered sample values with full-array metrics.
+- Only plot Reference, Kakadu MCT, and Absolute Error; use a sequential colormap for absolute errors.
+- Use short titles and do not confuse clipped display values with full-array metrics.
 - Avoid saving large intermediate arrays only to produce plots.
