@@ -76,7 +76,7 @@ with (args.out / "metrics.csv").open("w", newline="") as file:
         (name, *values.values()) for (name, _, _), values in zip(stages, stats)
     )
 
-plot(stages, stats, args.out, actual_ratio, backend, args.row)
+plot(stages, args.out, args.row)
 tifffile.imwrite(args.out / "reference_reconstruction.tiff", reference_volume)
 tifffile.imwrite(args.out / "compressed_reconstruction.tiff", decoded_volume)
 for (name, _, _), values in zip(stages, stats):
